@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran QR Dana</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #5c6bc0, #3f51b5);
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .container h1 {
+            color: #333;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .container p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .container img {
+            max-width: 250px;
+            border: 5px solid #fff;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .container img:hover {
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .zoom-controls {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .zoom-controls button {
+            padding: 5px 15px;
+            font-size: 16px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #3f51b5;
+            color: white;
+        }
+
+        .instructions {
+            text-align: left;
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .instructions h3 {
+            margin: 0 0 10px;
+            color: #333;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .instructions ul li {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .instructions ul li strong {
+            color: #3f51b5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pembayaran QR Dana</h1>
+        <p>Scan QR Code di bawah ini untuk melakukan pembayaran:</p>
+        
+        <!-- Gambar QR Code dengan ID untuk kontrol zoom -->
+        <img id="qrCode" src="https://i.ibb.co/2ccPht9/qr-dana.png" alt="QR Code Dana">
+
+        <div class="zoom-controls">
+            <button onclick="zoomIn()">Zoom In</button>
+            <button onclick="zoomOut()">Zoom Out</button>
+        </div>
+
+        <p class="note">Pastikan sudah benar</strong>.</p>
+
+        <!-- Langkah-langkah pembayaran -->
+        <div class="instructions">
+            <h3>Cara Pembayaran dengan Dana:</h3>
+            <ul>
+                <li>Buka aplikasi <strong>Dana</strong> di ponsel Anda.</li>
+                <li>Pilih menu <strong>Scan QR</strong>.</li>
+                <li>Arahkan kamera ke QR Code di atas.</li>
+                <li>Masukkan nominal pembayaran sesuai transaksi.</li>
+                <li>Konfirmasi pembayaran dan pastikan status berhasil.</li>
+                <li>Jika tidak bisa langsung scan, Anda bisa screenshot gambar QR di atas dan mengunggahnya ke fitur *Gallery Scan* di aplikasi Dana.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Variabel untuk gambar QR Code
+        let qrCode = document.getElementById('qrCode');
+        let scale = 1;
+
+        // Fungsi untuk Zoom In
+        function zoomIn() {
+            if (scale < 2) {  // Maksimum zoom 2x
+                scale += 0.1;
+                qrCode.style.transform = `scale(${scale})`;
+            }
+        }
+
+        // Fungsi untuk Zoom Out
+        function zoomOut() {
+            if (scale > 0.5) {  // Minimum zoom 0.5x
+                scale -= 0.1;
+                qrCode.style.transform = `scale(${scale})`;
+            }
+        }
+    </script>
+</body>
+</html>
